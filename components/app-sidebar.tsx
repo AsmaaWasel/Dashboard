@@ -298,7 +298,7 @@ export function AppSidebar({
                       }}
                       className="rounded-md"
                     >
-                      Edit
+                      Editt
                     </Button>
                     <Button
                       variant="outline"
