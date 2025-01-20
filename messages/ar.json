@@ -1,0 +1,36 @@
+{
+  "Sidebar": {
+    "home": "الرئيسية",
+    "statistics": "الاحصائيات",
+    "calender": "المواعيد",
+    "logout": "تسجيل الخروج"
+  },
+  "Calendar": {
+    "today": "اليوم",
+    "month": "شهر",
+    "week": "اسبوع",
+    "day": "يوم",
+    "year": "سنة",
+    "addEventTitle": "اضافة المزيد من المحاضرات",
+    "eventNamePlaceholder": "اسم المحاضره",
+    "add": "اضافة",
+    "deleteConfirmation": "هل انت متأكد من حذف المحاضرة \"{title}\"؟",
+    "deleteConfirmationTitle": "هل انت متأكد من حذف المحاضره؟",
+    "delete": "حذف",
+    "cancel": "الغاء"
+  },
+  "TableFooter": {
+    "show": "عرض",
+    "entires": "عناصر",
+    "numberOfEntries": "عرض {startIndex} الى {endIndex} من {totalEntries} عنصر",
+    "pagination": "صفحه {currentPage} من {totalPages}"
+  },
+  "Login": {
+    "login": "تسجيل دخول",
+    "emailAndPass": "ادخل البريد الالكترونى وكلمة السر",
+    "email": "البريد الالكترونى",
+    "password": "كلمة السر",
+    "loginSubmite": "تسجيل دخول",
+    "forgetPass": "هل نسيت كلمة السر؟"
+  }
+}

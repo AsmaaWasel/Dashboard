@@ -1,0 +1,36 @@
+{
+  "Sidebar": {
+    "home": "Home",
+    "statistics": "Statistics",
+    "calender": "Calender",
+    "logout": "Log out"
+  },
+  "Calendar": {
+    "today": "Today",
+    "month": "Month",
+    "week": "Week",
+    "day": "Day",
+    "year": "Year",
+    "addEventTitle": "Add More Events",
+    "eventNamePlaceholder": "Event Name",
+    "add": "Add",
+    "deleteConfirmation": "Are you sure you want to delete \"{title}\"?",
+    "deleteConfirmationTitle": "Are you sure you want to delete?",
+    "cancel": "Cancel",
+    "delete": "Delete"
+  },
+  "TableFooter": {
+    "show": "show",
+    "entires": "entires",
+    "numberOfEntries": "Showing {startIndex} to {endIndex} of {totalEntries} entries",
+    "pagination": "page {currentPage} of {totalPages}"
+  },
+  "Login": {
+    "login": "Login",
+    "emailAndPass": "Enter Your Email And Password",
+    "email": "Email",
+    "password": "Password",
+    "loginSubmite": "Login",
+    "forgetPass": "Forgot Password?"
+  }
+}
