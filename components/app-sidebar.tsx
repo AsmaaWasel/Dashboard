@@ -298,7 +298,7 @@ export function AppSidebar({
                       }}
                       className="rounded-md"
                     >
-                      ✏️
+                      Edit
                     </Button>
                     <Button
                       variant="outline"
@@ -306,7 +306,7 @@ export function AppSidebar({
                       onClick={() => handleDeleteCategory(category._id)} // Use _id for delete
                       className="rounded-md"
                     >
-                      🗑️
+                      Delete
                     </Button>
                   </div>
                 </SidebarMenuItem>
