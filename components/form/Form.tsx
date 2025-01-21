@@ -2,10 +2,11 @@
 
 import React, { useState } from "react";
 
-const AddServiceForm = ({ categoryId }) => {
+const AddServiceForm = ({ initialCategoryId }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [country, setCountry] = useState(""); // New state for country
+  const [country, setCountry] = useState("");
+  const [categoryId, setCategoryId] = useState(initialCategoryId || ""); // State for categoryId
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
@@ -17,7 +18,7 @@ const AddServiceForm = ({ categoryId }) => {
 
     try {
       const response = await fetch(
-        `http://192.168.50.142:3000/api/auth/category/${categoryId}/service`,
+        `http://192.168.50.142:3000/api/auth/category/${categoryId}/`,
         {
           method: "POST",
           headers: {
@@ -27,18 +28,22 @@ const AddServiceForm = ({ categoryId }) => {
           body: JSON.stringify({ name, description, country }),
         }
       );
-      console.log("Child Category ID:", categoryId);
+
       if (response.ok) {
         setMessage("Service added successfully");
         setName("");
         setDescription("");
         setCountry("");
       } else {
+        // Parse the error message from the response
         const errorData = await response.json();
-        setMessage(errorData.error || "Failed to add service");
+        setMessage(
+          `Failed to add service: ${errorData.error || response.statusText}`
+        );
       }
     } catch (error) {
-      setMessage("An error occurred. Please try again.");
+      console.error("Error:", error);
+      setMessage(`An error occurred: ${error.message}`);
     } finally {
       setLoading(false);
     }
@@ -65,7 +70,7 @@ const AddServiceForm = ({ categoryId }) => {
         />
       </div>
       <div>
-        <label>Country:</label> {/* New input for country */}
+        <label>Country:</label>
         <input
           type="text"
           value={country}
@@ -73,6 +78,7 @@ const AddServiceForm = ({ categoryId }) => {
           required
         />
       </div>
+
       <button type="submit" disabled={loading}>
         {loading ? "Adding..." : "Add Service"}
       </button>

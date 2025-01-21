@@ -41,7 +41,7 @@ export function AppSidebar({
   const isExpanded = state === "expanded";
   const pathname = usePathname();
 
-  const [categories, setCategories] = React.useState<string[]>([]);
+  const [categories, setCategories] = React.useState<Category[]>([]);
   const [newCategory, setNewCategory] = React.useState("");
   const [isAddDialogOpen, setIsAddDialogOpen] = React.useState(false);
 
@@ -281,7 +281,7 @@ export function AppSidebar({
                     className="flex-grow"
                   >
                     <Link
-                      href={`/categories/${category._id}`}
+                      href={`/category/${category._id}`}
                       className="flex items-center w-full"
                     >
                       {isExpanded && <span>{category.title}</span>}
@@ -298,7 +298,7 @@ export function AppSidebar({
                       }}
                       className="rounded-md"
                     >
-                      Editt
+                      ✏️
                     </Button>
                     <Button
                       variant="outline"
@@ -306,7 +306,7 @@ export function AppSidebar({
                       onClick={() => handleDeleteCategory(category._id)} // Use _id for delete
                       className="rounded-md"
                     >
-                      Delete
+                      ❎
                     </Button>
                   </div>
                 </SidebarMenuItem>
