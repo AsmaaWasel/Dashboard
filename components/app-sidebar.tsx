@@ -101,7 +101,7 @@ export function AppSidebar({
       const response = await fetch(
         "http://192.168.50.142:3000/api/auth/category",
         {
-          method: "POST",
+          method: "PATCH",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`, // Add your token here

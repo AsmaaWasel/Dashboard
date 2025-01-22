@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
 import {
   Dialog,
   DialogContent,
@@ -22,7 +21,6 @@ const ForgotPasswordModal: React.FC<ForgotPasswordModalProps> = ({
   isOpen,
   onClose,
 }) => {
-  const t = useTranslations("ForgotPassword");
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -50,11 +48,12 @@ const ForgotPasswordModal: React.FC<ForgotPasswordModalProps> = ({
 
       if (response.ok) {
         setSuccess(true);
+        setEmail(""); // Clear the email input after successful submission
       } else {
-        setError(data.message || t("errorMessage"));
+        setError(data.message || "An error occurred. Please try again.");
       }
     } catch (error) {
-      setError(t("errorMessage"));
+      setError("An error occurred. Please try again.");
     } finally {
       setIsLoading(false);
     }
@@ -64,17 +63,20 @@ const ForgotPasswordModal: React.FC<ForgotPasswordModalProps> = ({
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{t("title")}</DialogTitle>
-          <DialogDescription>{t("description")}</DialogDescription>
+          <DialogTitle>Forgot Password</DialogTitle>
+          <DialogDescription>
+            Enter your email address and we'll send you a link to reset your
+            password.
+          </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit}>
           <div className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email">{t("email")}</Label>
+              <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
                 type="email"
-                placeholder={t("emailPlaceholder")}
+                placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -82,10 +84,12 @@ const ForgotPasswordModal: React.FC<ForgotPasswordModalProps> = ({
             </div>
             {error && <p className="text-red-500 text-sm">{error}</p>}
             {success && (
-              <p className="text-green-500 text-sm">{t("successMessage")}</p>
+              <p className="text-green-500 text-sm">
+                Password reset link sent to your email.
+              </p>
             )}
             <Button type="submit" className="w-full" disabled={isLoading}>
-              {isLoading ? t("sending") : t("send")}
+              {isLoading ? "Sending..." : "Send Reset Link"}
             </Button>
           </div>
         </form>

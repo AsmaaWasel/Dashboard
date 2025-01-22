@@ -12,8 +12,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import Link from "next/link";
 import { useTranslations } from "next-intl";
+import ForgotPasswordModal from "./ForgotPasswordModal";
 
 const LoginForm = () => {
   const t = useTranslations("Login");
@@ -25,8 +25,8 @@ const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [isForgotPasswordOpen, setIsForgotPasswordOpen] = useState(false);
 
-  //a validateForm function
   const validateForm = () => {
     let isValid = true;
     setEmailError("");
@@ -88,7 +88,7 @@ const LoginForm = () => {
         localStorage.setItem("token", data.token);
 
         // Check if the user is authorized (username matches "Merge")
-        if (data.user.username === "Merge") {
+        if (data.user.username === "Asmaa") {
           router.push("/dashboard"); // Redirect to dashboard
         } else {
           setError("Unauthorized access.");
@@ -149,16 +149,21 @@ const LoginForm = () => {
               {isLoading ? "Logging in..." : t("loginSubmite")}
             </Button>
             <div className="flex justify-between gap-1 text-sm">
-              <Link
-                href="/forgot-password"
-                className="text-primary hover:underline"
+              <Button
+                variant="link"
+                className="text-primary p-0 h-auto"
+                onClick={() => setIsForgotPasswordOpen(true)}
               >
                 {t("forgetPass")}
-              </Link>
+              </Button>
             </div>
           </CardFooter>
         </form>
       </Card>
+      <ForgotPasswordModal
+        isOpen={isForgotPasswordOpen}
+        onClose={() => setIsForgotPasswordOpen(false)}
+      />
     </div>
   );
 };
